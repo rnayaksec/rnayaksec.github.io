@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on Hands On Cybersecurity Learning Blog</title>
+    <link>https://rnayaksec.github.io/posts/</link>
+    <description>Recent content in Posts on Hands On Cybersecurity Learning Blog</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <copyright>© Rohit Nayak</copyright>
+    <lastBuildDate>Mon, 01 Jan 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://rnayaksec.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Linux Basics - Adding users and groups</title>
+      <link>https://rnayaksec.github.io/posts/linux_prereq_crypto/</link>
+      <pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate>
+      <guid>https://rnayaksec.github.io/posts/linux_prereq_crypto/</guid>
+      <description>&lt;p&gt;This short introductory post will walk you through adding a user, creating a group, adding the user to the group and sudoers, and setting up a shared folder with proper permissions on Ubuntu Linux.&lt;/p&gt;&#xA;&lt;p&gt;The end goal is to end up with two user who can play the role of Alice and Bob as is typically the case for lot of cryptographic operations.&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;[! IMPORTANT]&#xA;This blog assumes you already are logged into Ubuntu Linux with one user and all we are doing here is creating a second one. Alternately you can reuse the same script and create two distinct users if you wish to do so.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
