@@ -2,11 +2,11 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on Hands On Cybersecurity Learning Blog</title>
-    <link>http://localhost:1313/archie/categories/</link>
+    <link>https://github.com/rnayaksec/rnayaksec.github.io/tree/main/public/categories/</link>
     <description>Recent content in Categories on Hands On Cybersecurity Learning Blog</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <copyright>© Rohit Nayak</copyright>
-    <atom:link href="http://localhost:1313/archie/categories/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://github.com/rnayaksec/rnayaksec.github.io/tree/main/public/categories/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>
