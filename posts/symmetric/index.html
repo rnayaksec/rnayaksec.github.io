@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html><head lang="en">
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>Crypto Lab 1 - Using Symmetric keys - Hands On Cybersecurity Learning Blog</title><meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="This is our first Crypto Lab that shows the usage of symmetric keys" />
+	<meta property="og:image" content=""/>
+	<meta property="og:url" content="https://rnayaksec.github.io/posts/symmetric/">
+  <meta property="og:site_name" content="Hands On Cybersecurity Learning Blog">
+  <meta property="og:title" content="Crypto Lab 1 - Using Symmetric keys">
+  <meta property="og:description" content="This is our first Crypto Lab that shows the usage of symmetric keys">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2024-01-02T00:00:00+00:00">
+    <meta property="article:modified_time" content="2024-01-02T00:00:00+00:00">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Crypto Lab 1 - Using Symmetric keys">
+  <meta name="twitter:description" content="This is our first Crypto Lab that shows the usage of symmetric keys">
+<script src="https://rnayaksec.github.io/js/feather.min.js"></script>
+	
+	
+        <link href="https://rnayaksec.github.io/css/fonts.11a1877508139eac0b5b4852ceb110c35641b3533321e66e39149e901ed5756b.css" rel="stylesheet">
+	
+
+	
+	<link rel="stylesheet" type="text/css" media="screen" href="https://rnayaksec.github.io/css/main.fa747a9bb099b7bfd5d71b78a6e8ca2e23a425384e48bf533f1d357aeb61d265.css" />
+
+	
+	
+		<script type="text/javascript"
+		src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+		</script>
+
+		
+		<script type="text/x-mathjax-config">
+		MathJax.Hub.Config({
+			tex2jax: {
+				inlineMath: [['$','$'], ['\\(','\\)']],
+				displayMath: [['$$','$$'], ['\[','\]']],
+				processEscapes: true,
+				processEnvironments: true,
+				skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+				TeX: { equationNumbers: { autoNumber: "AMS" },
+						 extensions: ["AMSmath.js", "AMSsymbols.js"] }
+			}
+		});
+		</script>
+	
+
+	
+	
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/katex.min.css">
+		<script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/katex.min.js"></script>
+		<script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body);"></script>
+
+		
+		<script>
+			document.addEventListener("DOMContentLoaded", function() {
+					renderMathInElement(document.body, {
+							delimiters: [
+									{left: "$$", right: "$$", display: true},
+									{left: "$", right: "$", display: false}
+							]
+					});
+			});
+			</script>
+	
+
+	
+</head>
+<body>
+        <div class="content"><header>
+	<div class="main">
+		<a href="https://rnayaksec.github.io/">Hands On Cybersecurity Learning Blog</a>
+	</div>
+	<nav>
+		
+		<a href="/posts">Home</a>
+		
+		<a href="/posts">All posts</a>
+		
+		<a href="/about/about">About</a>
+		
+		<a href="/tags">Tags</a>
+		
+		
+	</nav>
+</header>
+
+<main>
+	<article>
+		<div class="title">
+			<h1 class="title">Crypto Lab 1 - Using Symmetric keys</h1>
+			<div class="meta">Posted on Jan 2, 2024</div>
+		</div>
+		
+
+		
+
+		<section class="body">
+			<p>Symmetric encryption, also known as shared secret encryption, uses the same key for both encryption and decryption. If one user encrypts a message with a secret key, the recipient must use the same key to decrypt it.</p>
+<p>Let&rsquo;s walk through an example of symmetric key encryption on the Linux command line involving two users, mikey and bart, using <code>gpg</code> . In this case the shared key is the passphrase used to encrypt and decrypt.</p>
+<p>Please refer to <a href="posts%5Clinux_prereq_crypto.md">pre-requisite</a> for this blog to ensure that you have two users setup on Linux.</p>
+<h3 id="scenario">Scenario</h3>
+<ul>
+<li>
+<p><strong>mikey</strong> wants to send an encrypted file to <strong>bart</strong> using a shared passphrase.</p>
+</li>
+<li>
+<p>Both mikey and bart will use the same symmetric key (passphrase) for encryption and decryption.</p>
+</li>
+<li>
+<p>The file to be encrypted is <code>turing_bio</code> stored at <code>/srv/shared</code></p>
+</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>&gt;head turing_bio
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-console" data-lang="console"><span style="display:flex;"><span>Alan Mathison Turing was an English mathematician, computer scientist, logician, cryptanalyst, philosopher and theoretical biologist.
+</span></span></code></pre></div><hr>
+<h3 id="mikeys-side-encrypting-the-file">mikey&rsquo;s Side (Encrypting the File)</h3>
+<ol>
+<li><strong>mikey</strong> encrypts the file using a symmetric key with <code>gpg</code>:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>&gt;gpg --symmetric --cipher-algo AES256 turing_bio
+</span></span></code></pre></div><p>This command will prompt mikey to enter a passphrase. The result is a file called <code>turing_bio.gpg</code> created in the same folder</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>&gt;ls 
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-console" data-lang="console"><span style="display:flex;"><span>turing_bio  turing_bio.gpg
+</span></span></code></pre></div><p>Checking contents of the file reveals that contains encrypted text</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>&gt;head turing_bio.gpg 
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-console" data-lang="console"><span style="display:flex;"><span>�   ��������z���%�׈�?�
+</span></span></code></pre></div><h3 id="barts-side-decrypting-the-file">bart&rsquo;s Side (Decrypting the File)</h3>
+<ol>
+<li><strong>bart</strong> decrypts the file using the same passphrase:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>   gpg --output turing_bio_decrypted --decrypt turing_bio.gpg
+</span></span></code></pre></div><p>This command will prompt bart to enter the passphrase that mikey used to encrypt the file.</p>
+<ol start="3">
+<li><strong>bart</strong> can now read the decrypted message and check that it is identical to original</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>   &gt;diff turing_bio turing_bio_decrypted 
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"></code></pre></div>
+		</section>
+
+		<div class="post-tags">
+			
+			
+			
+		</div>
+		</article>
+</main>
+<footer>
+  <div style="display:flex"><a class="soc" href="https://github.com/rnayaksec" rel="me" title="GitHub"><i data-feather="github"></i></a>
+    <a class="border"></a><a class="soc" href="https://x.com/rnayaksec" rel="me" title="X"><i data-feather="twitter"></i></a>
+    <a class="border"></a><a class="soc" href="https://www.linkedin.com/in/rohitnayak/" rel="me" title="LinkedIn"><i data-feather="linkedin"></i></a>
+    <a class="border"></a></div>
+  <div class="footer-info">
+    2024  © Rohit Nayak |  <a
+      href="https://github.com/athul/archie">Archie Theme</a> | Built with <a href="https://gohugo.io">Hugo</a>
+  </div>
+</footer>
+
+
+<script>
+  feather.replace()
+</script></div>
+    </body>
+</html>

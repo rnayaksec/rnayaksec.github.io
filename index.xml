@@ -7,8 +7,36 @@
     <generator>Hugo</generator>
     <language>en-us</language>
     <copyright>© Rohit Nayak</copyright>
-    <lastBuildDate>Mon, 01 Jan 2024 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 04 Jan 2024 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://rnayaksec.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Crypto Lab 3 - Using Digital Signatures</title>
+      <link>https://rnayaksec.github.io/posts/digisign/</link>
+      <pubDate>Thu, 04 Jan 2024 00:00:00 +0000</pubDate>
+      <guid>https://rnayaksec.github.io/posts/digisign/</guid>
+      <description>&lt;p&gt;Digital signatures provide an electronic counterpart to physical signatures, using asymmetric cryptography to achieve the following&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;Authentication&lt;/strong&gt;: The person owning the public key used to sign the message is the one who signed it.&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Integrity&lt;/strong&gt;: The message was not altered after being signed.&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Non-repudiation&lt;/strong&gt;: The sender can prove these facts to a third party if necessary.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;Behind the scenes, digital signatures depend on two things&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;A collision-resistant &lt;strong&gt;hash function&lt;/strong&gt; that ensures no two inputs produce the same output.&lt;/li&gt;&#xA;&lt;li&gt;Asymmetric key pair: Anything encrypted with one key can only be decrypted with the other key from the pair.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;Let&amp;rsquo;s walk through an example of using digital signatures on the Linux command line involving two users, mikey and bart, using &lt;code&gt;gpg&lt;/code&gt; .&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Crypto Lab 2 - Using Asymmetric keys</title>
+      <link>https://rnayaksec.github.io/posts/asymmetric/</link>
+      <pubDate>Wed, 03 Jan 2024 00:00:00 +0000</pubDate>
+      <guid>https://rnayaksec.github.io/posts/asymmetric/</guid>
+      <description>&lt;p&gt;Asymmetric encryption, also known as public key cryptography, uses a pair of keys: a public key for encryption and a private key for decryption. Each user has a key pair, and anything encrypted with one key can be decrypted with the other key from the same pair.&lt;/p&gt;&#xA;&lt;p&gt;Please refer to &lt;a href=&#34;posts%5Clinux_prereq_crypto.md&#34;&gt;pre-requisite&lt;/a&gt; for this blog to ensure that you have two users setup on Linux.&lt;/p&gt;&#xA;&lt;h3 id=&#34;scenario&#34;&gt;Scenario&lt;/h3&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;mikey&lt;/strong&gt; wants to send an encrypted file to &lt;strong&gt;bart&lt;/strong&gt;.&lt;/li&gt;&#xA;&lt;li&gt;mikey uses bart&amp;rsquo;s public key to encrypt the file.&lt;/li&gt;&#xA;&lt;li&gt;bart uses his private key to decrypt the file.&lt;/li&gt;&#xA;&lt;li&gt;The file to be encrypted is &lt;code&gt;turing_bio&lt;/code&gt; stored at &lt;code&gt;/srv/shared&lt;/code&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;hr&gt;&#xA;&lt;h3 id=&#34;barts-side-generating-the-keys&#34;&gt;bart&amp;rsquo;s Side (Generating the keys)&lt;/h3&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&lt;strong&gt;bart&lt;/strong&gt; generates a key pair (public and private keys):&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;   gpg --gen-key&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Follow the prompts to generate the key pair. bart will need to provide his name, email address, and a passphrase. Here&amp;rsquo;s the sample output&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Create your blog using Hugo and GitHub</title>
+      <link>https://rnayaksec.github.io/posts/howto/</link>
+      <pubDate>Tue, 02 Jan 2024 00:00:00 +0000</pubDate>
+      <guid>https://rnayaksec.github.io/posts/howto/</guid>
+      <description>&lt;p&gt;Here is a step-by-step guide on how to create a blog using Hugo and GitHub:&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;1. Prerequisites:&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;GitHub Account:&lt;/strong&gt; Create a GitHub account if you don&amp;rsquo;t have one already.&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Hugo Installation:&lt;/strong&gt; Install Hugo. The installation command for macOS using Homebrew is provided in the video: &lt;code&gt;brew install hugo&lt;/code&gt;.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;&lt;strong&gt;2. Create GitHub Repositories:&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;Create a repository for your blog&amp;rsquo;s source code:&lt;/strong&gt; This repository will hold your blog&amp;rsquo;s content, themes, and configurations. Name it something descriptive, like &amp;ldquo;my_blog_source&amp;rdquo;.&lt;/li&gt;&#xA;&lt;li&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Create a repository for your blog&amp;rsquo;s deployment:&lt;/strong&gt; This repository will host the statically generated files for your blog. Name it according to GitHub Pages conventions: &lt;code&gt;your-username.github.io&lt;/code&gt;.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;&lt;strong&gt;3. Set up Local Development Environment:&lt;/strong&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Crypto Lab 1 - Using Symmetric keys</title>
+      <link>https://rnayaksec.github.io/posts/symmetric/</link>
+      <pubDate>Tue, 02 Jan 2024 00:00:00 +0000</pubDate>
+      <guid>https://rnayaksec.github.io/posts/symmetric/</guid>
+      <description>&lt;p&gt;Symmetric encryption, also known as shared secret encryption, uses the same key for both encryption and decryption. If one user encrypts a message with a secret key, the recipient must use the same key to decrypt it.&lt;/p&gt;&#xA;&lt;p&gt;Let&amp;rsquo;s walk through an example of symmetric key encryption on the Linux command line involving two users, mikey and bart, using &lt;code&gt;gpg&lt;/code&gt; . In this case the shared key is the passphrase used to encrypt and decrypt.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Linux Basics - Adding users and groups</title>
       <link>https://rnayaksec.github.io/posts/linux_prereq_crypto/</link>
