@@ -7,13 +7,14 @@
     <generator>Hugo</generator>
     <language>en-us</language>
     <copyright>© Rohit Nayak</copyright>
+    <lastBuildDate>Sun, 01 Dec 2024 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://rnayaksec.github.io/about/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>About me</title>
+      <title>About this blog</title>
       <link>https://rnayaksec.github.io/about/about/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <pubDate>Sun, 01 Dec 2024 00:00:00 +0000</pubDate>
       <guid>https://rnayaksec.github.io/about/about/</guid>
-      <description></description>
+      <description>&lt;h3 id=&#34;what-is-this-blog-about&#34;&gt;What is this blog about?&lt;/h3&gt;&#xA;&lt;p&gt;Welcome to my corner of the internet dedicated to demystifying the world of cybersecurity!&#xA;This blog is born from a passion for making security knowledge accessible, particularly for those just starting their journey in this exciting field. My goal is threefold:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;to break down fundamental security concepts into easily digestible pieces&lt;/li&gt;&#xA;&lt;li&gt;to explore specific topics relevant to achieving the coveted CISSP certification&lt;/li&gt;&#xA;&lt;li&gt;and to bring these concepts to life through practical, hands-on labs whenever possible.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;Beyond core security principles, we&amp;rsquo;ll also venture into adjacent areas like Linux administration, data science with Python, and the fascinating realms of machine learning and AI, recognizing their growing importance in the modern security landscape. Join me as we explore, learn, and grow together in the ever-evolving world of cyber protection.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

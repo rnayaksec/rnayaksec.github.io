@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html><head lang="en">
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>Crypto Lab 4- Key Exchange - Hands On Cybersecurity Learning Blog</title><meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="Crypto Lab 4- Key Exchange" />
+	<meta property="og:image" content=""/>
+	<meta property="og:url" content="https://rnayaksec.github.io/posts/keyexchange/">
+  <meta property="og:site_name" content="Hands On Cybersecurity Learning Blog">
+  <meta property="og:title" content="Crypto Lab 4- Key Exchange">
+  <meta property="og:description" content="Crypto Lab 4- Key Exchange">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2024-12-05T00:00:00+00:00">
+    <meta property="article:modified_time" content="2024-12-05T00:00:00+00:00">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Crypto Lab 4- Key Exchange">
+  <meta name="twitter:description" content="Crypto Lab 4- Key Exchange">
+<script src="https://rnayaksec.github.io/js/feather.min.js"></script>
+	
+	
+        <link href="https://rnayaksec.github.io/css/fonts.11a1877508139eac0b5b4852ceb110c35641b3533321e66e39149e901ed5756b.css" rel="stylesheet">
+	
+
+	
+	<link rel="stylesheet" type="text/css" media="screen" href="https://rnayaksec.github.io/css/main.13be42446d1bfba541b5d924ab3b7f0bca079b91c46b645ffe317b0561fb4bf0.css" />
+
+	
+	
+		<script type="text/javascript"
+		src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+		</script>
+
+		
+		<script type="text/x-mathjax-config">
+		MathJax.Hub.Config({
+			tex2jax: {
+				inlineMath: [['$','$'], ['\\(','\\)']],
+				displayMath: [['$$','$$'], ['\[','\]']],
+				processEscapes: true,
+				processEnvironments: true,
+				skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+				TeX: { equationNumbers: { autoNumber: "AMS" },
+						 extensions: ["AMSmath.js", "AMSsymbols.js"] }
+			}
+		});
+		</script>
+	
+
+	
+	
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/katex.min.css">
+		<script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/katex.min.js"></script>
+		<script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body);"></script>
+
+		
+		<script>
+			document.addEventListener("DOMContentLoaded", function() {
+					renderMathInElement(document.body, {
+							delimiters: [
+									{left: "$$", right: "$$", display: true},
+									{left: "$", right: "$", display: false}
+							]
+					});
+			});
+			</script>
+	
+
+	
+</head>
+<body>
+        <div class="content"><header>
+	<div class="main">
+		<a href="https://rnayaksec.github.io/">Hands On Cybersecurity Learning Blog</a>
+	</div>
+	<nav>
+		
+		<a href="/posts">Home</a>
+		
+		<a href="/posts">All posts</a>
+		
+		<a href="/about/about">About</a>
+		
+		<a href="/tags">Tags</a>
+		
+		
+	</nav>
+</header>
+
+<main>
+	<article>
+		<div class="title">
+			<h1 class="title">Crypto Lab 4- Key Exchange</h1>
+			<div class="meta">Posted on Dec 5, 2024</div>
+		</div>
+		
+
+		
+
+		<section class="body">
+			<p>Diffie-Hellman key exchange is a method that allows two parties to establish a shared secret over an insecure channel. Here&rsquo;s how you can perform a basic Diffie-Hellman key exchange using OpenSSL on Linux:</p>
+<h3 id="step-by-step-demo">Step-by-Step Demo</h3>
+<ol>
+<li><strong>Generate Diffie-Hellman Parameters</strong>:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>openssl dhparam -out dhparam.pem <span style="color:#ae81ff">2048</span>
+</span></span></code></pre></div><ol start="2">
+<li><strong>Generate Private Keys for Both Parties</strong>:</li>
+</ol>
+<ul>
+<li><strong>For Party A</strong>:</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>openssl genpkey -paramfile dhparam.pem -out privateA.pem
+</span></span></code></pre></div><ul>
+<li><strong>For Party B</strong>:</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>openssl genpkey -paramfile dhparam.pem -out privateB.pem
+</span></span></code></pre></div><ol>
+<li><strong>Extract Public Keys from the Private Keys</strong>:</li>
+</ol>
+<ul>
+<li><strong>For Party A</strong>:</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>openssl pkey -in privateA.pem -pubout -out publicA.pem
+</span></span></code></pre></div><ul>
+<li><strong>For Party B</strong>:</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>  openssl pkey -in privateB.pem -pubout -out publicB.pem
+</span></span></code></pre></div><ol>
+<li><strong>Generate the Shared Secret</strong>:
+<ul>
+<li><strong>For Party A (using Party B&rsquo;s public key)</strong>:</li>
+</ul>
+</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>openssl pkeyutl -derive -inkey privateA.pem -peerkey publicB.pem -out shared_secret_A.bin
+</span></span></code></pre></div><ul>
+<li><strong>For Party B (using Party A&rsquo;s public key)</strong>:</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>     openssl pkeyutl -derive -inkey privateB.pem -peerkey publicA.pem -out shared_secret_B.bin
+</span></span></code></pre></div><ol start="2">
+<li><strong>Verify the Shared Secrets Match</strong>:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>   diff shared_secret_A.bin shared_secret_B.bin <span style="color:#f92672">&amp;&amp;</span> echo <span style="color:#e6db74">&#34;Shared secrets match!&#34;</span> <span style="color:#f92672">||</span> echo <span style="color:#e6db74">&#34;Shared secrets do not match!&#34;</span>
+</span></span></code></pre></div><h3 id="explanation">Explanation</h3>
+<ul>
+<li><strong>Step 1</strong>: Generates Diffie-Hellman parameters (a shared foundation) which both parties use.</li>
+<li><strong>Step 2</strong>: Each party generates their private keys using the shared parameters.</li>
+<li><strong>Step 3</strong>: Extracts public keys from the private keys to be shared with the other party.</li>
+<li><strong>Step 4</strong>: Each party generates a shared secret using their private key and the other party&rsquo;s public key.</li>
+<li><strong>Step 5</strong>: Verifies that both parties have derived the same shared secret.</li>
+</ul>
+<p>This demonstration helps you understand the process of establishing a shared secret securely. If you have more questions or need further details, feel free to ask!</p>
+
+		</section>
+
+		<div class="post-tags">
+			
+			
+			
+		</div>
+		</article>
+</main>
+<footer>
+  <div style="display:flex"><a class="soc" href="https://github.com/rnayaksec" rel="me" title="GitHub"><i data-feather="github"></i></a>
+    <a class="border"></a><a class="soc" href="https://x.com/rnayaksec" rel="me" title="X"><i data-feather="twitter"></i></a>
+    <a class="border"></a><a class="soc" href="https://www.linkedin.com/in/rohitnayak/" rel="me" title="LinkedIn"><i data-feather="linkedin"></i></a>
+    <a class="border"></a></div>
+  <div class="footer-info">
+    2024  © Rohit Nayak |  <a
+      href="https://github.com/athul/archie">Archie Theme</a> | Built with <a href="https://gohugo.io">Hugo</a>
+  </div>
+</footer>
+
+
+<script>
+  feather.replace()
+</script></div>
+    </body>
+</html>
